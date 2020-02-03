@@ -1,6 +1,58 @@
+:root {
+  /**  Background  **/
+  --bgImg: url(/themes/bright/images/background.jpg);
+
+ /**  Cover  **/
+  --coverImg: auto;
+  --coverHeight: auto;
+  --coverDxDy: auto;
+
+  /**  Page  **/
+  --pageTrueBG: url(/images/bg-dark.jpg);
+  --pageTransBG: transparent;
+  --BGOpacity: 0;
+
+  /**  Watermark  **/
+     /* SVG prefereable, otherwise png (in INDEX COLOR MODE) */
+  --watermarkIMG: none;
+  --watermarkColor: 0;
+  --watermarkSize: 40%;
+  --watermarkRepeat: no-repeat;
+  --watermarkPos: auto;
+
+  /**  Rough Photo Edge  **/
+     /* upload png (in INDEX COLOR MODE) to imgur, get link from source code (starts with i.imgur.com) */
+  --photoMaskImg: none;
+  --photoMaskSize: auto;
+  --photoMaskPos: auto;
+
+  /**  Decorative Border  **/
+  --borderStyle: none; /*(double or none)*/
+  --borderImg: none;
+  --borderSlice: none;
+  --borderSize: 0;
+  --borderOffset: 0;
+  --SliceFill: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .user-css-presentation {
   /* Site Background */
-  background: url(https://img4.goodfon.com/wallpaper/nbig/e/3e/nebo-oblaka-pole-savanna-priroda.jpg) ;
+  background:  var(--bgImg);
   background-repeat: no-repeat;
   background-size:  cover;
   background-attachment: fixed;
@@ -8,24 +60,26 @@
 
 #cover img {
   /* Cover Image */
-  content: url(https://i.pinimg.com/originals/a8/43/95/a8439505aa4192e8a5abb000535c43c7.jpg);
+  content: var(--coverImg) ;
 
   /* Scale and Crop*/
   object-fit: cover;
-  height: 550px;
   width: 100%;
-  object-position: 0% 65%;
+
+  height: var(--coverHeight);
+  object-position: var(--coverDxDy);
 }
 
 .page {
   /* Remove BG  */
-  background: none
+  background: var(--pageTrueBG);
 }
 
 .page::after {
   /* Transparent Background Hack */
-  background: url(/images/bg-dark.jpg);
-  opacity: 0.87;
+  background: var(--pageTransBG);
+  opacity: var(--BGOpacity);
+
   position: absolute;
   top: 0;
   left: 0;
@@ -43,35 +97,28 @@
   height: 100%;
 
   /* Mask Settings */
-  background-color: rgba(219, 162, 55, .3);
-  /*  image(url( ... ), #color)   if png/jpg i think, dont quote me  */
-  -webkit-mask: url(https://upload.wikimedia.org/wikipedia/commons/6/6a/Claw_Marks.svg);
-  mask: url(https://upload.wikimedia.org/wikipedia/commons/6/6a/Claw_Marks.svg);
-  -webkit-mask-size: 40%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: 25% 700px;
+  -webkit-mask: var(--watermarkIMG);
+  mask: var(--watermarkIMG);
+  background-color: var(--watermarkColor);
+  -webkit-mask-size: var(--watermarkSize);
+  -webkit-mask-repeat: var(--watermarkRepeat);
+  -webkit-mask-position: var(--watermarkPos);
 }
 
 .m-b-20 div a img {
   /* Rough Photo Edge  */
-  background-color: rgba(219, 162, 55, .5);
-  -webkit-mask-image: url(http://i.imgur.com/9RJkL56.png);
-  /* upload png (in INDEX COLOR MODE) to imgur, get link from source code (starts with i.imgur.com) */
+  -webkit-mask-image: var(--photoMaskImg);
+  -webkit-mask-size: var(--photoMaskSize);
+  -webkit-mask-position: var(--photoMaskPos);
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 110% 113%;
-  /*-webkit-mask-position: 50% 50%*/
 }
 
 .m-b-20 div  {
   /* Decorative Border */
-  border-color: orange;
-  border-style: double;
-  border-image: url(https://i.ya-webdesign.com/images/frames-and-borders-png-7.png)  
-      47% 47% 47% 47%/    /*slice*/
-     50/  /*size*/
-     5   /*offset*/
-      round round;
-
-  /* 10% 10% 10% round */
-  /*  50 50 50 50 round */
+  border-style: var(--borderStyle);
+  border-image-source: var(--borderImg);
+  border-image-slice: var(--borderSlice);
+  border-image-width: var(--borderSize);
+  border-image-outset: var(--borderOffset);
+  border-image-repeat: var(--SliceFill);
 }
