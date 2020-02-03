@@ -1,4 +1,8 @@
 :root {
+/*****************/
+/*       STYLES        */
+/*****************/
+
   /**  Background  **/
   --bgImg: url(/themes/bright/images/background.jpg);
 
@@ -33,22 +37,19 @@
   --borderSize: 0;
   --borderOffset: 0;
   --SliceFill: auto;
+
+/*****************/
+/*   ANIMATION    */
+/*****************/
+  --pageFadeInTime: 1s;
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*****************/
+/*       STYLES        */
+/*****************/
 
 .user-css-presentation {
   /* Site Background */
@@ -121,4 +122,23 @@
   border-image-width: var(--borderSize);
   border-image-outset: var(--borderOffset);
   border-image-repeat: var(--SliceFill);
+}
+
+
+
+/*****************/
+/*   ANIMATION    */
+/*****************/
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.page {
+    /*Page Fade In*/
+    -webkit-animation: fadein var(--pageFadeInTime); /* Safari, Chrome and Opera > 12.1 */
+    -ms-animation: fadein var(--pageFadeInTime); /* Internet Explorer */
+     animation: fadein var(--pageFadeInTime);
+    /*Page Future anim.*/
+
 }
